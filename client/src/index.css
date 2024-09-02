@@ -31,7 +31,13 @@ body::-webkit-scrollbar {
     left: 0;
     right: 0;
     height: 700px;
-    background: linear-gradient(to bottom, #75ac8b00 20%, #DAE8E0 80%);
+    background: linear-gradient(to bottom, #75ac8b00 20%, #C2DACC 80%);
     pointer-events: none;
   }
+}
+
+.shadow {
+  -webkit-box-shadow: -4px 4px 21px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -4px 4px 21px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: -4px 4px 21px 0px rgba(0, 0, 0, 0.75);
 }
