@@ -41,13 +41,30 @@ const HomeHeaderCards = () => {
   };
 
   return (
-    <section className="relative top-0 home-header z-0">
-      <img
-        className="w-full bg-cover header-image hidden lg:block"
-        src={homeHeaderBg}
-        alt="Header Background Image"
-      />
-      <div className="relative lg:absolute pt-4 lg:bottom-0 left-1/2 -translate-x-1/2 z-50 grid grid-cols-1 lg:grid-cols-2 gap-8 w-4/5">
+    <section className="relative top-0 z-0">
+      <div className="relative hidden xl:block">
+        <img
+          className="w-full bg-cover"
+          src={homeHeaderBg}
+          alt="Header Background Image"
+        />
+        <div
+          className="absolute bottom-48 h-48 w-full"
+          style={{
+            backgroundImage:
+              "linear-gradient(to bottom, rgba(255, 255, 255, 0) 10%, #D2E4D9 90%)",
+          }}
+        ></div>
+        <div
+          className="h-48 w-full"
+          style={{
+            backgroundImage:
+              "linear-gradient(to bottom, rgba(255, 255, 255, 0) 10%, #ffffff 90%)",
+          }}
+        ></div>
+      </div>
+
+      <div className="relative xl:absolute pt-16 xl:bottom-0 left-1/2 -translate-x-1/2 z-50 grid grid-cols-1 lg:grid-cols-2 gap-8 w-4/5">
         {[articles[6], articles[0]].map(
           (article, index) =>
             article && (
