@@ -6,7 +6,12 @@ import { Link } from "react-router-dom";
 const HomeHeaderCards = () => {
   const { articles, loading, error } = useArticles(true);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading)
+    return (
+      <p className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-3xl">
+        Loading...
+      </p>
+    );
   if (error) return <p>Error: {error}</p>;
 
   const renderArticleTitle = (title) => {
@@ -76,7 +81,7 @@ const HomeHeaderCards = () => {
                   <h3>{renderArticleTitle(article.title)}</h3>
                   <p className="mt-2">{article.teaser}</p>
                 </div>
-                <Link>
+                <Link to={`/articles/${article.id}`}>
                   <FaArrowAltCircleRight className="text-6xl mt-4" />
                 </Link>
               </div>
