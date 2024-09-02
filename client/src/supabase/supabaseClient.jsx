@@ -1,19 +1,29 @@
 import { createClient } from "@supabase/supabase-js";
 import { createContext, useContext } from "react";
 
-// Initialize Supabase client once
-const supabaseUrl = 'https://xolijibfaoscceamabvd.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhvbGlqaWJmYW9zY2NlYW1hYnZkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjMwMjk1NjAsImV4cCI6MjAzODYwNTU2MH0.1XS-HXuckL3WvyH-F4abo9omSHWcOGy00OMjnN-x800';
+// Initialize Supabase client with environment variables
+const supabaseUrl = import.meta.env.VITE_API_URL; // URL of the Supabase instance
+const supabaseKey = import.meta.env.VITE_API_KEY; // Key for accessing Supabase
+
+// Check if Supabase URL and Key are present
+if (!supabaseUrl || !supabaseKey) {
+  console.error("Supabase URL or Key is missing."); // Log error if either value is missing
+}
+
+// Create a Supabase client instance
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-const SupabaseContext = createContext();
+// Create a React context for Supabase
+const SupabaseContext = createContext(); // This context will provide Supabase client to components
 
+// Provider component to wrap around parts of the app needing access to Supabase
 export const SupabaseProvider = ({ children }) => {
   return (
     <SupabaseContext.Provider value={{ supabase }}>
-      {children}
+      {children} {/* Render child components with Supabase client available via context */}
     </SupabaseContext.Provider>
   );
 };
 
-export const useSupabase = () => useContext(SupabaseContext);
+// Custom hook to use Supabase context in functional components
+export const useSupabase = () => useContext(SupabaseContext); // Access the Supabase client from context
