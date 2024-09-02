@@ -1,13 +1,13 @@
-import HeaderCards from "../components/headerCards";
-import LoginPage from "./login";
+import HomeHeaderCards from "../components/homeHeaderCards";
+import HomeMiddleCard from "../components/homeMiddleCard";
+import HomeBottomCard from "../components/homeBottomCard";
 
 const Home = () => {
-  
-
   return (
     <div className="">
-      <HeaderCards />
-
+      <HomeHeaderCards />
+      <HomeMiddleCard />
+      <HomeBottomCard />
     </div>
   );
 };
