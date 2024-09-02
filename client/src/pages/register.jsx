@@ -8,9 +8,8 @@ const RegisterPage = () => {
   const [error, setError] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
   const { supabase } = useSupabase();
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
-  // Handle registration
   const handleRegister = async (e) => {
     e.preventDefault();
     setError(null);
@@ -27,8 +26,8 @@ const RegisterPage = () => {
       } else {
         setSuccessMessage("Registration successful! Redirecting to login...");
         setTimeout(() => {
-          navigate("/login"); // Redirect to login page after successful registration
-        }, 2000); // Redirect after 2 seconds
+          navigate("/login");
+        }, 2000);
       }
     } catch (error) {
       setError("Error registering. Please try again.");
@@ -67,10 +66,13 @@ const RegisterPage = () => {
             className="hover:bg-[#eee] border-[#CCCCCC] border-[1px] px-4 py-3 rounded-md w-full outline-none"
           />
 
-<div className="flex justify-between items-center mt-6">
+          <div className="flex justify-between items-center mt-6">
             <p className="text-sm">
-            Allerede registreret?{" "}
-              <Link to="/login" className="text-blue-400 hover:text-[#1A3636] underline">
+              Allerede registreret?{" "}
+              <Link
+                to="/login"
+                className="text-blue-400 hover:text-[#1A3636] underline"
+              >
                 Login
               </Link>
             </p>
