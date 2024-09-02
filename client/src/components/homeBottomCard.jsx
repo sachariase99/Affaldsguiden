@@ -1,4 +1,4 @@
-import useArticles from "../hooks/useArticles";
+import useArticles from "../hooks/useArticles.jsx";
 import { FaArrowAltCircleRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import affaldssortering from "../assets/affaldssortering-1.jpg";
