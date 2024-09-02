@@ -36,7 +36,7 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className="p-16 mb-32 mx-8 h-[1000px]">
+    <div className="p-16 lg:mb-32 mx-8 h-[700px]">
       <div className="w-full md:w-1/2">
         <h2 className="text-4xl font-bold mb-12">Register</h2>
         <form onSubmit={handleRegister} className="flex flex-col">
