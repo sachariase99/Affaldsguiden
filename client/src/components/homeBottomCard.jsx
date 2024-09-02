@@ -4,10 +4,7 @@ import { Link } from "react-router-dom";
 import affaldssortering from "../assets/affaldssortering-1.jpg";
 
 const HomeBottomCard = () => {
-  const { articles, loading, error } = useArticles(true);
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
+  const { articles } = useArticles(true);
 
   const renderArticleTitle = (title) => {
     // Split the title into an array of words
