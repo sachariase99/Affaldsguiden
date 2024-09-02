@@ -9,6 +9,7 @@ const Nav = () => {
   return (
     <nav className="border-y-2 border-black">
       <div className="max-w-[1280px] mx-auto flex flex-col lg:flex-row">
+        {/* Mobile menu button and header */}
         <div className="lg:hidden flex items-center justify-between py-4 px-8 border-b-2 border-black">
           <NavLink
             to="/home"
@@ -25,57 +26,73 @@ const Nav = () => {
           </button>
         </div>
 
-        <ul className={`flex flex-col lg:flex lg:flex-row lg:items-center overflow-hidden transition-max-height duration-300 ease-in-out ${isOpen ? "max-h-[500px]" : "max-h-0"}`}>
-          <NavLink
-            to="/home"
-            className={({ isActive }) =>
-              `lg:py-8 px-2 text-xl text-center lg:text-normal lg:border-b-0 lg:border-l-2 lg:border-r-2 border-black hover:bg-[#D6BD98] ${
-                isActive ? "bg-[#D6BD98]" : ""
-              }`
-            }
-          >
-            Forside
-          </NavLink>
-          <NavLink
-            to="/sortering"
-            className={({ isActive }) =>
-              `lg:py-8 px-2 text-xl text-center lg:text-normal lg:border-b-0 lg:border-r-2 border-black hover:bg-[#D6BD98] ${
-                isActive ? "bg-[#D6BD98]" : ""
-              }`
-            }
-          >
-            Sorteringsguide
-          </NavLink>
-          <NavLink
-            to="/genbrug"
-            className={({ isActive }) =>
-              `lg:py-8 px-2 text-xl text-center lg:text-normal lg:border-b-0 lg:border-r-2 border-black hover:bg-[#D6BD98] ${
-                isActive ? "bg-[#D6BD98]" : ""
-              }`
-            }
-          >
-            Genbrug
-          </NavLink>
-          <NavLink
-            to="/artikler"
-            className={({ isActive }) =>
-              `lg:py-8 px-2 text-xl text-center lg:text-normal lg:border-b-0 lg:border-r-2 border-black hover:bg-[#D6BD98] ${
-                isActive ? "bg-[#D6BD98]" : ""
-              }`
-            }
-          >
-            Artikler
-          </NavLink>
-          <NavLink
-            to="/bestil"
-            className={({ isActive }) =>
-              `lg:py-8 px-2 text-xl text-center lg:text-normal lg:border-r-2 border-black hover:bg-[#D6BD98] ${
-                isActive ? "bg-[#D6BD98]" : ""
-              }`
-            }
-          >
-            Bestil Container
-          </NavLink>
+        {/* Navigation links */}
+        <ul
+          className={`lg:flex lg:py-8 lg:flex-row lg:items-center lg:overflow-visible lg:max-h-none lg:transition-none 
+            flex flex-col overflow-hidden transition-max-height duration-300 ease-in-out ${
+              isOpen ? "max-h-[500px]" : "max-h-0"
+            }`}
+        >
+          <li>
+            <NavLink
+              to="/home"
+              className={({ isActive }) =>
+                `lg:py-8 px-2 text-xl text-center lg:text-normal lg:border-b-0 lg:border-l-2 lg:border-r-2 border-black hover:bg-[#D6BD98] ${
+                  isActive ? "bg-[#D6BD98]" : ""
+                }`
+              }
+            >
+              Forside
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/sortering"
+              className={({ isActive }) =>
+                `lg:py-8 px-2 text-xl text-center lg:text-normal lg:border-b-0 lg:border-r-2 border-black hover:bg-[#D6BD98] ${
+                  isActive ? "bg-[#D6BD98]" : ""
+                }`
+              }
+            >
+              Sorteringsguide
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/genbrug"
+              className={({ isActive }) =>
+                `lg:py-8 px-2 text-xl text-center lg:text-normal lg:border-b-0 lg:border-r-2 border-black hover:bg-[#D6BD98] ${
+                  isActive ? "bg-[#D6BD98]" : ""
+                }`
+              }
+            >
+              Genbrug
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/artikler"
+              className={({ isActive }) =>
+                `lg:py-8 px-2 text-xl text-center lg:text-normal lg:border-b-0 lg:border-r-2 border-black hover:bg-[#D6BD98] ${
+                  isActive ? "bg-[#D6BD98]" : ""
+                }`
+              }
+            >
+              Artikler
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/bestil"
+              className={({ isActive }) =>
+                `lg:py-8 px-2 text-xl text-center lg:text-normal lg:border-r-2 border-black hover:bg-[#D6BD98] ${
+                  isActive ? "bg-[#D6BD98]" : ""
+                }`
+              }
+            >
+              Bestil Container
+            </NavLink>
+          </li>
         </ul>
       </div>
     </nav>
