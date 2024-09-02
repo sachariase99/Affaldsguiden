@@ -7,7 +7,7 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
-  const { isLoggedIn, login, logout } = useContext(AuthContext);
+  const { isLoggedIn, login } = useContext(AuthContext);
   const navigate = useNavigate(); // Initialize useNavigate
 
   // Destructure the supabase instance from the useSupabase hook
@@ -32,7 +32,7 @@ const LoginPage = () => {
         setError(error.message);
       } else {
         login(email); // Call login from AuthContext with the user's email
-        navigate("/user"); // Redirect to user page after successful login
+        navigate("/home"); // Redirect to home page after successful login
       }
     } catch (error) {
       setError("Error signing in. Please try again.");
@@ -40,37 +40,43 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="p-4 rounded-xl mb-8 mx-8">
-      <div className="w-1/2">
-        <h2 className="text-2xl font-bold mb-12">Login</h2>
+    <div className="p-16 mb-32 mx-8 h-[1000px]">
+      <div className="w-full md:w-1/2">
+        <h2 className="text-4xl font-bold mb-12">Login</h2>
         <form onSubmit={handleSubmit} className="flex flex-col">
           {error && <p style={{ color: "red" }}>{error}</p>}
-          <label htmlFor="email">Email:</label>
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="hover:bg-[#eee] border-[#C52525] border-[1px] px-2 py-1 w-full mb-2 outline-none"
+            placeholder="Indtast din email"
+            className="hover:bg-[#eee] border-[#CCCCCC] border-[1px] px-4 py-3 rounded-md w-full mb-2 outline-none"
           />
-          <label htmlFor="password">Password:</label>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            className="hover:bg-[#eee] border-[#C52525] border-[1px] px-2 py-1 w-full outline-none"
+            placeholder="Indtast din adgangskode"
+            className="hover:bg-[#eee] border-[#CCCCCC] border-[1px] px-4 py-3 rounded-md w-full outline-none"
           />
-          <div className="flex items-center mt-6">
+          <div className="flex justify-between items-center mt-6">
+            <p className="text-sm">
+              Ikke registreret endnu?{" "}
+              <Link
+                to="/register"
+                className="text-blue-400 hover:text-[#1A3636] underline"
+              >
+                Register
+              </Link>
+            </p>
             <button
               type="submit"
-              className="hover:bg-[#eee] w-1/3 justify-start py-2 border-[#C52525] border-[1px] uppercase font-bold mr-3"
+              className="bg-[#119B1E] hover:bg-[#1A3636] text-white w-1/3 py-3 rounded-md uppercase font-bold"
             >
-              Log in
+              Login
             </button>
-            <p>
-              Not registered yet? <Link to="/register" className="text-blue-400 underline">Register</Link>
-            </p>
           </div>
         </form>
       </div>
