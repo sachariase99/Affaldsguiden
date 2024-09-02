@@ -9,7 +9,7 @@ const Header = () => {
   const { isLoggedIn, logout } = useContext(AuthContext);
 
   return (
-    <div className="flex items-center justify-between mx-24 py-4">
+    <div className="flex items-center justify-between gap-8 mx-24 py-4">
       <Link to="/">
         <img src={logo} alt="Logo" />
       </Link>
