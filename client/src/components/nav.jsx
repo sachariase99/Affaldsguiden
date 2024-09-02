@@ -7,7 +7,7 @@ const Nav = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <nav className="border-y-2 border-black">
+    <nav className="border-y-2 border-black font-inter">
       <div className="max-w-[1280px] mx-auto flex flex-col lg:flex-row">
         {/* Mobile menu button and header */}
         <div className="lg:hidden flex items-center justify-between py-4 px-8 border-b-2 border-black">
