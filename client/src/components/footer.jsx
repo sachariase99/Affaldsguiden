@@ -21,13 +21,13 @@ const Footer = () => {
           <p className="text-lg">9000 Aalborg</p>
         </div>
         <div className="flex gap-8 h-2/3">
-          <img src={GooglePlay} alt="Google Play" />
-          <img src={AppStore} alt="App Store" />
+          <img src={GooglePlay} alt="Google Play" className="cursor-pointer" />
+          <img src={AppStore} alt="App Store" className="cursor-pointer" />
         </div>
         <div className="flex gap-4 h-1/2 items-center">
-          <FaInstagram className="hover:text-[#D6BD98] text-6xl"/>
-          <CiLinkedin className="hover:text-[#D6BD98] text-6xl"/>
-          <AiOutlineFacebook className="hover:text-[#D6BD98] text-6xl"/>
+          <FaInstagram className="hover:text-[#D6BD98] text-6xl cursor-pointer"/>
+          <CiLinkedin className="hover:text-[#D6BD98] text-6xl cursor-pointer"/>
+          <AiOutlineFacebook className="hover:text-[#D6BD98] text-6xl cursor-pointer"/>
         </div>
       </div>
     </footer>
