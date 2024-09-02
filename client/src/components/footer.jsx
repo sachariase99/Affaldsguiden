@@ -12,19 +12,19 @@ const Footer = () => {
         style={{
           backgroundImage: `url(${FooterBg})`,
         }}
-        className="bg-cover h-96 w-full text-white absolute bottom-0 -z-10"
+        className="bg-cover h-96 w-full absolute bottom-0 z-0"
       ></div>
-      <div className="flex justify-between items-center px-24 py-8">
+      <div className="relative z-10 flex flex-col lg:flex-row justify-between lg:items-center px-24 py-8">
         <div>
           <h2 className="text-3xl font-bold">Affaldsguiden</h2>
           <p className="text-lg">Øster Uttrupvej 1A</p>
           <p className="text-lg">9000 Aalborg</p>
         </div>
-        <div className="flex gap-8 h-2/3">
-          <img src={GooglePlay} alt="Google Play" className="cursor-pointer" />
-          <img src={AppStore} alt="App Store" className="cursor-pointer" />
+        <div className="flex flex-col lg:flex-row gap-4 my-4 lg:my-0 lg:gap-8 h-2/3">
+          <img src={GooglePlay} alt="Google Play" className="cursor-pointer max-w-[150px]" />
+          <img src={AppStore} alt="App Store" className="cursor-pointer max-w-[150px]" />
         </div>
-        <div className="flex gap-4 h-1/2 items-center">
+        <div className="flex gap-4 h-1/2">
           <FaInstagram className="hover:text-[#D6BD98] text-6xl cursor-pointer"/>
           <CiLinkedin className="hover:text-[#D6BD98] text-6xl cursor-pointer"/>
           <AiOutlineFacebook className="hover:text-[#D6BD98] text-6xl cursor-pointer"/>
