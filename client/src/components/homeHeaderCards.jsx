@@ -48,7 +48,7 @@ const HomeHeaderCards = () => {
         alt="Header Background Image"
       />
       <div className="relative lg:absolute pt-4 lg:bottom-0 left-1/2 -translate-x-1/2 z-50 grid grid-cols-1 lg:grid-cols-2 gap-8 w-4/5">
-        {[articles[4], articles[0]].map(
+        {[articles[6], articles[0]].map(
           (article, index) =>
             article && (
               <div
