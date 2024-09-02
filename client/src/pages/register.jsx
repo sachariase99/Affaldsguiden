@@ -36,9 +36,9 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className="p-4 rounded-xl h-[50vh] mb-8 mx-8">
-      <div className="w-1/2">
-        <h2 className="text-2xl font-bold mb-12">Register</h2>
+    <div className="p-16 mb-32 mx-8 h-[1000px]">
+      <div className="w-full md:w-1/2">
+        <h2 className="text-4xl font-bold mb-12">Register</h2>
         <form onSubmit={handleRegister} className="flex flex-col">
           {error && <p style={{ color: "red" }}>{error}</p>}
           {successMessage && (
@@ -47,40 +47,39 @@ const RegisterPage = () => {
             </p>
           )}
 
-          <label htmlFor="email">Email:</label>
           <input
             id="email"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="border-[1px] px-2 py-1 w-full mb-2 outline-none border-[#C52525] hover:bg-[#eee]"
+            placeholder="Indtast din email"
+            className="hover:bg-[#eee] border-[#CCCCCC] border-[1px] px-4 py-3 rounded-md w-full mb-2 outline-none"
           />
 
-          <label htmlFor="password">Password:</label>
           <input
             id="password"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            minLength="6"
-            className="border-[1px] px-2 py-1 w-full outline-none border-[#C52525] hover:bg-[#eee]"
+            placeholder="Indtast din adgangskode"
+            className="hover:bg-[#eee] border-[#CCCCCC] border-[1px] px-4 py-3 rounded-md w-full outline-none"
           />
 
-          <div className="flex items-center mt-6">
-            <button
-              type="submit"
-              className="hover:bg-[#eee] w-1/3 justify-start py-2 mr-3 border-[#C52525] border-[1px] uppercase font-bold"
-            >
-              Register
-            </button>
-            <p>
-              Already registered?{" "}
-              <Link to="/login" className="text-blue-400 underline">
+<div className="flex justify-between items-center mt-6">
+            <p className="text-sm">
+            Allerede registreret?{" "}
+              <Link to="/login" className="text-blue-400 hover:text-[#1A3636] underline">
                 Login
               </Link>
             </p>
+            <button
+              type="submit"
+              className="bg-[#119B1E] hover:bg-[#1A3636] text-white w-1/3 py-3 rounded-md uppercase font-bold"
+            >
+              Registrer
+            </button>
           </div>
         </form>
       </div>
