@@ -8,14 +8,13 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const { isLoggedIn, login } = useContext(AuthContext);
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
-  // Destructure the supabase instance from the useSupabase hook
   const { supabase } = useSupabase();
 
   useEffect(() => {
     if (isLoggedIn) {
-      navigate("/user"); // Redirect to user page if already logged in
+      navigate("/home");
     }
   }, [isLoggedIn, navigate]);
 
@@ -31,8 +30,8 @@ const LoginPage = () => {
       if (error) {
         setError(error.message);
       } else {
-        login(email); // Call login from AuthContext with the user's email
-        navigate("/home"); // Redirect to home page after successful login
+        login(email);
+        navigate("/home");
       }
     } catch (error) {
       setError("Error signing in. Please try again.");
