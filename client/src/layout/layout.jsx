@@ -11,8 +11,7 @@ const Layout = () => {
 
       <main
         style={{
-          backgroundImage:
-            "linear-gradient(to bottom, #06682D 10%, #FFFFFF 45%)",
+          backgroundImage: "linear-gradient(to bottom, #06682D 10%, #FFFFFF 45%)",
         }}
         className="w-full relative" // Ensure main takes full width
       >
