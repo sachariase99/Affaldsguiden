@@ -82,7 +82,7 @@ const HomeHeaderCards = () => {
                   <p className="mt-2">{article.teaser}</p>
                 </div>
                 <Link to={`/articles/${article.id}`}>
-                  <FaArrowAltCircleRight className="text-6xl mt-4" />
+                  <FaArrowAltCircleRight className="text-6xl mt-4 hover:text-[#D6BD98]" />
                 </Link>
               </div>
             )

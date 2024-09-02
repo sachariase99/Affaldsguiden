@@ -44,7 +44,7 @@ const HomeMiddleCard = () => {
                 <p>{article.teaser}</p>
                 <div className="flex justify-end xl:justify-normal my-8">
                 <Link to={`/articles/${article.id}`}>
-                  <FaArrowAltCircleRight className="text-6xl" />
+                  <FaArrowAltCircleRight className="text-6xl hover:text-[#D6BD98]" />
                 </Link>
                 </div>
               </div>

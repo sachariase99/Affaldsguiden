@@ -50,7 +50,7 @@ const HomeBottomCard = () => {
                 <div>
                   <h3>{renderArticleTitle(article.title)}</h3>
                   <Link to={`/articles/${article.id}`}>
-                    <FaArrowAltCircleRight className="text-6xl mt-4" />
+                    <FaArrowAltCircleRight className="text-6xl mt-4 hover:text-[#D6BD98]" />
                   </Link>
                 </div>
               </div>
