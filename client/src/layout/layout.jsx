@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import Nav from "../components/nav";
+import Header from "../components/header";
 import Footer from "../components/footer";
 
 const Layout = () => {
@@ -7,7 +7,7 @@ const Layout = () => {
     <div className="flex flex-col min-h-screen">
       {/* Sticky navbar */}
       <header className="sticky top-0 z-50">
-        <Nav />
+        <Header />
       </header>
 
       {/* Main content area */}

@@ -40,8 +40,8 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="bg-white p-4 rounded-xl h-[50vh] mb-8 mx-8 relative">
-      <div className="w-1/2 absolute left-1/2 -translate-x-1/2 top-10">
+    <div className="p-4 rounded-xl mb-8 mx-8">
+      <div className="w-1/2">
         <h2 className="text-2xl font-bold mb-12">Login</h2>
         <form onSubmit={handleSubmit} className="flex flex-col">
           {error && <p style={{ color: "red" }}>{error}</p>}
