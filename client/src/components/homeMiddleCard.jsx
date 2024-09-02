@@ -3,10 +3,7 @@ import { FaArrowAltCircleRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const HomeMiddleCard = () => {
-  const { articles, loading, error } = useArticles(true);
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
+  const { articles } = useArticles(true);
 
   const renderArticleTitle = (title) => {
     // Split the title into an array of words
