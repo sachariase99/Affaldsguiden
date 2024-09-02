@@ -11,6 +11,10 @@
   font-family: "Open Sans", sans-serif;
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
 .font-inter {
   font-family: "Inter", sans-serif;
 }
