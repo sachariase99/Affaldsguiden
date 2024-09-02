@@ -7,7 +7,7 @@ const Nav = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <nav className="border-y-2 border-black font-inter">
+    <nav className="border-y-[1px] border-black font-inter">
       <div className="max-w-[1280px] mx-auto flex flex-col lg:flex-row">
         {/* Mobile menu button and header */}
         <div className="lg:hidden flex items-center justify-between py-4 px-8 border-b-2 border-black">
@@ -37,7 +37,7 @@ const Nav = () => {
             <NavLink
               to="/home"
               className={({ isActive }) =>
-                `lg:py-8 px-2 text-xl text-center lg:text-normal lg:border-b-0 lg:border-l-2 lg:border-r-2 border-black hover:bg-[#D6BD98] ${
+                `lg:py-8 px-8 text-xl text-center lg:text-normal lg:border-b-0 lg:border-l-[1px] lg:border-r-[1px] border-black hover:bg-[#D6BD98] ${
                   isActive ? "bg-[#D6BD98]" : ""
                 }`
               }
@@ -49,7 +49,7 @@ const Nav = () => {
             <NavLink
               to="/sortering"
               className={({ isActive }) =>
-                `lg:py-8 px-2 text-xl text-center lg:text-normal lg:border-b-0 lg:border-r-2 border-black hover:bg-[#D6BD98] ${
+                `lg:py-8 px-8 text-xl text-center lg:text-normal lg:border-b-0 lg:border-r-[1px] border-black hover:bg-[#D6BD98] ${
                   isActive ? "bg-[#D6BD98]" : ""
                 }`
               }
@@ -61,7 +61,7 @@ const Nav = () => {
             <NavLink
               to="/genbrug"
               className={({ isActive }) =>
-                `lg:py-8 px-2 text-xl text-center lg:text-normal lg:border-b-0 lg:border-r-2 border-black hover:bg-[#D6BD98] ${
+                `lg:py-8 px-8 text-xl text-center lg:text-normal lg:border-b-0 lg:border-r-[1px] border-black hover:bg-[#D6BD98] ${
                   isActive ? "bg-[#D6BD98]" : ""
                 }`
               }
@@ -71,9 +71,9 @@ const Nav = () => {
           </li>
           <li>
             <NavLink
-              to="/artikler"
+              to="/articles"
               className={({ isActive }) =>
-                `lg:py-8 px-2 text-xl text-center lg:text-normal lg:border-b-0 lg:border-r-2 border-black hover:bg-[#D6BD98] ${
+                `lg:py-8 px-8 text-xl text-center lg:text-normal lg:border-b-0 lg:border-r-[1px] border-black hover:bg-[#D6BD98] ${
                   isActive ? "bg-[#D6BD98]" : ""
                 }`
               }
@@ -85,7 +85,7 @@ const Nav = () => {
             <NavLink
               to="/bestil"
               className={({ isActive }) =>
-                `lg:py-8 px-2 text-xl text-center lg:text-normal lg:border-r-2 border-black hover:bg-[#D6BD98] ${
+              `lg:py-8 px-8 text-xl text-center lg:text-normal lg:border-r-[1px] border-black hover:bg-[#D6BD98] ${
                   isActive ? "bg-[#D6BD98]" : ""
                 }`
               }
