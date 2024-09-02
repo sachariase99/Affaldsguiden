@@ -7,7 +7,7 @@ import { AiOutlineFacebook } from "react-icons/ai";
 
 const Footer = () => {
   return (
-    <footer className="relative">
+    <div className="relative">
       <div
         style={{
           backgroundImage: `url(${FooterBg})`,
@@ -30,7 +30,7 @@ const Footer = () => {
           <AiOutlineFacebook className="hover:text-[#D6BD98] text-6xl cursor-pointer"/>
         </div>
       </div>
-    </footer>
+    </div>
   );
 };
 
