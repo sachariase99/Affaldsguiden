@@ -17,7 +17,6 @@ const useArticles = (isNews) => {
         const { data, error } = await supabase
           .from('articles')
           .select('*')
-          .eq('is_news', isNews);
 
         if (error) {
           throw error;
