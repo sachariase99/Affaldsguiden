@@ -11,22 +11,22 @@ const Layout = () => {
       </header>
 
       {/* Main content area */}
-      <div
+      <main
         style={{
           backgroundImage:
             "linear-gradient(to bottom, #06682D 10%, #FFFFFF 70%)",
         }}
         className="w-full"
       >
-        <main
+        <div
           className="relative z-10 flex-grow max-w-[1280px] mx-auto px-8 xl:px-0"
           style={{
             backgroundImage: "linear-gradient(to bottom, #D8EADB, rgba(255, 255, 255, 0))",
           }}          
         >
           <Outlet />
-        </main>
-      </div>
+        </div>
+      </main>
 
       {/* Footer at the bottom */}
       <footer className="mt-auto">
