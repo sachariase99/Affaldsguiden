@@ -6,14 +6,27 @@ const Layout = () => {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Sticky navbar */}
-      <header className="sticky top-0 z-50">
+      <header className="z-50">
         <Header />
       </header>
 
       {/* Main content area */}
-      <main className="flex-grow max-w-[1280px] mx-8 xl:mx-auto xl:w-full">
-        <Outlet />
-      </main>
+      <div
+        style={{
+          backgroundImage:
+            "linear-gradient(to bottom, #06682D 10%, #FFFFFF 70%)",
+        }}
+        className="w-full"
+      >
+        <main
+          className="relative z-10 flex-grow max-w-[1280px] mx-auto px-8 xl:px-0"
+          style={{
+            backgroundImage: "linear-gradient(to bottom, #D8EADB, rgba(255, 255, 255, 0))",
+          }}          
+        >
+          <Outlet />
+        </main>
+      </div>
 
       {/* Footer at the bottom */}
       <footer className="mt-auto">
