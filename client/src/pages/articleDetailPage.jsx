@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import useArticles from '../hooks/useArticles';
+import useArticles from '../hooks/useArticles.jsx';
 import styles from '../scss/articleDetailPage.module.scss';
 
 const ArticleDetailPage = () => {
