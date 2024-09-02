@@ -49,7 +49,7 @@ const HomeBottomCard = () => {
                 <h3 className="text-2xl text-[#119B1E] font-bold xl:mb-64">Få gode idéer til, hvordan du gør det nemt at sortere affaldet hjemme hos dig.</h3>
                 <div>
                   <h3>{renderArticleTitle(article.title)}</h3>
-                  <Link>
+                  <Link to={`/articles/${article.id}`}>
                     <FaArrowAltCircleRight className="text-6xl mt-4" />
                   </Link>
                 </div>

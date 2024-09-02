@@ -43,7 +43,7 @@ const HomeMiddleCard = () => {
                 <h3>{renderArticleTitle(article.title)}</h3>
                 <p>{article.teaser}</p>
                 <div className="flex justify-end xl:justify-normal my-8">
-                <Link>
+                <Link to={`/articles/${article.id}`}>
                   <FaArrowAltCircleRight className="text-6xl" />
                 </Link>
                 </div>
