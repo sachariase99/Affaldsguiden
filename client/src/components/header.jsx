@@ -3,14 +3,16 @@ import { IoMdLogIn } from "react-icons/io";
 import logo from "../assets/logo.png";
 import { useContext } from "react";
 import { AuthContext } from "../context/authContext";
+import Nav from './nav'
 
 const Header = () => {
   // AuthContext to check if the user is logged in
   const { isLoggedIn, logout } = useContext(AuthContext);
 
   return (
-    <div className="flex items-center justify-between gap-8 mx-24 py-4">
-      <Link to="/">
+    <div>
+      <div className="flex items-center justify-between gap-8 mx-24 py-4">
+      <Link to="/home">
         <img src={logo} alt="Logo" />
       </Link>
       {isLoggedIn ? (
@@ -30,6 +32,8 @@ const Header = () => {
           <IoMdLogIn />
         </Link>
       )}
+    </div>
+    <Nav />
     </div>
   );
 };
