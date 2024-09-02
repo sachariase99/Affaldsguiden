@@ -15,7 +15,7 @@ const OrderContainer = () => {
     phone: '',
   });
   const [formStatus, setFormStatus] = useState('');
-  const [errors, setErrors] = useState({}); // State for tracking errors
+  const [errors, setErrors] = useState({});
 
   if (loading)
     return (
@@ -33,7 +33,6 @@ const OrderContainer = () => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
 
-    // Clear specific field error when user changes the value
     setErrors({ ...errors, [name]: '' });
   };
 
@@ -43,13 +42,11 @@ const OrderContainer = () => {
     let hasErrors = false;
     let validationErrors = {};
 
-    // Client-side validation
     if (!selectedContainerId) {
       setFormStatus('Please select a container.');
       return;
     }
 
-    // Check for required fields
     for (const [key, value] of Object.entries(formData)) {
       if (!value.trim()) {
         validationErrors[key] = `Please fill in the ${key}.`;
@@ -57,7 +54,6 @@ const OrderContainer = () => {
       }
     }
 
-    // Numeric validation for zipcode and phone
     const numericFields = {
       zipcode: 'Postnummer',
       phone: 'Telefonnummer'
@@ -87,7 +83,6 @@ const OrderContainer = () => {
         ]);
 
       if (error) {
-        // Customize this part based on Supabase error details
         if (error.message.includes('invalid input syntax for type bigint')) {
           setFormStatus('There was an issue with the container ID. Please try again.');
         } else if (error.message.includes('not-null constraint')) {
@@ -95,11 +90,10 @@ const OrderContainer = () => {
         } else {
           setFormStatus(`Error: ${error.message}`);
         }
-        throw error; // Ensure errors are caught
+        throw error;
       }
 
       setFormStatus('Order placed successfully!');
-      // Optionally reset form fields
       setFormData({
         fullname: '',
         address: '',
@@ -109,9 +103,8 @@ const OrderContainer = () => {
         phone: '',
       });
       setSelectedContainerId(null);
-      setErrors({}); // Clear errors on successful submission
+      setErrors({});
     } catch (error) {
-      // Catch and display unexpected errors
       setFormStatus(`Unexpected error: ${error.message}`);
     }
   };
@@ -155,7 +148,7 @@ const OrderContainer = () => {
       <p className="py-8">Containeren leveres til:</p>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input
-          className={`px-6 py-3 rounded-lg border border-gray-300 w-2/5 ${errors.fullname ? 'border-red-500' : ''}`}
+          className={`px-6 py-3 rounded-lg border border-gray-300 w-full xl:w-2/5 ${errors.fullname ? 'border-red-500' : ''}`}
           type="text"
           name="fullname"
           value={formData.fullname}
@@ -164,7 +157,7 @@ const OrderContainer = () => {
           placeholder="Indtast dit navn"
         />
         <input
-          className={`px-6 py-3 rounded-lg border border-gray-300 w-2/5 ${errors.address ? 'border-red-500' : ''}`}
+          className={`px-6 py-3 rounded-lg border border-gray-300 w-full xl:w-2/5 ${errors.address ? 'border-red-500' : ''}`}
           type="text"
           name="address"
           value={formData.address}
@@ -173,7 +166,7 @@ const OrderContainer = () => {
           placeholder="Indtast din adresse"
         />
         <input
-          className={`px-6 py-3 rounded-lg border border-gray-300 w-2/5 ${errors.zipcode ? 'border-red-500' : ''}`}
+          className={`px-6 py-3 rounded-lg border border-gray-300 w-full xl:w-2/5 ${errors.zipcode ? 'border-red-500' : ''}`}
           type="text"
           name="zipcode"
           value={formData.zipcode}
@@ -182,7 +175,7 @@ const OrderContainer = () => {
           placeholder="Indtast dit postnummer"
         />
         <input
-          className={`px-6 py-3 rounded-lg border border-gray-300 w-2/5 ${errors.city ? 'border-red-500' : ''}`}
+          className={`px-6 py-3 rounded-lg border border-gray-300 w-full xl:w-2/5 ${errors.city ? 'border-red-500' : ''}`}
           type="text"
           name="city"
           value={formData.city}
@@ -191,7 +184,7 @@ const OrderContainer = () => {
           placeholder="Indtast navn på din by"
         />
         <input
-          className={`px-6 py-3 rounded-lg border border-gray-300 w-2/5 ${errors.email ? 'border-red-500' : ''}`}
+          className={`px-6 py-3 rounded-lg border border-gray-300 w-full xl:w-2/5 ${errors.email ? 'border-red-500' : ''}`}
           type="email"
           name="email"
           value={formData.email}
@@ -200,7 +193,7 @@ const OrderContainer = () => {
           placeholder="Indtast din email"
         />
         <input
-          className={`px-6 py-3 rounded-lg border border-gray-300 w-2/5 ${errors.phone ? 'border-red-500' : ''}`}
+          className={`px-6 py-3 rounded-lg border border-gray-300 w-full xl:w-2/5 ${errors.phone ? 'border-red-500' : ''}`}
           type="tel"
           name="phone"
           value={formData.phone}
@@ -211,7 +204,7 @@ const OrderContainer = () => {
         <input
           type="submit"
           value="Send"
-          className="bg-[#119B1E] hover:bg-[#1A3636] text-white w-2/12 py-3 rounded-lg cursor-pointer"
+          className="bg-[#119B1E] hover:bg-[#1A3636] text-white w-1/4 xl:w-2/12 py-3 rounded-lg cursor-pointer"
         />
         {formStatus && <p className="text-center mt-4">{formStatus}</p>}
       </form>
