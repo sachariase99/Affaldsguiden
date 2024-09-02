@@ -31,7 +31,7 @@ body::-webkit-scrollbar {
     left: 0;
     right: 0;
     height: 700px;
-    background: linear-gradient(to bottom, #75ac8b00 20%, #e3eee7 80%);
+    background: linear-gradient(to bottom, #75ac8b00 20%, #DAE8E0 80%);
     pointer-events: none;
   }
 }
