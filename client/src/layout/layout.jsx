@@ -14,7 +14,7 @@ const Layout = () => {
           backgroundImage:
             "linear-gradient(to bottom, #06682D 10%, #FFFFFF 70%)",
         }}
-        className="w-full"
+        className="w-full relative" // Ensure main takes full width
       >
         <div
           className="relative z-10 flex-grow max-w-[1280px] mx-auto px-8 xl:px-0"
