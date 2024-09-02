@@ -11,7 +11,7 @@ const Header = () => {
 
   return (
     <div>
-      <div className="flex items-center justify-between gap-8 mx-24 py-4">
+      <div className="flex items-center justify-between gap-8 mx-24 py-4 bg-white">
       <Link to="/home">
         <img src={logo} alt="Logo" />
       </Link>
