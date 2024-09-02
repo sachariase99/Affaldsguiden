@@ -8,7 +8,6 @@ const AppRoutes = () => {
   return (
     <Router>
       <Routes>
-        {/* Pass the Layout component directly without JSX syntax */}
         <Route path="/" element={<Layout />}>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
