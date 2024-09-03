@@ -7,21 +7,23 @@ const OrderContainer = () => {
   const { containers, loading, error } = useContainer(true);
   const [selectedContainerId, setSelectedContainerId] = useState(null);
   const [formData, setFormData] = useState({
-    fullname: '',
-    address: '',
-    zipcode: '',
-    city: '',
-    email: '',
-    phone: '',
+    fullname: "",
+    address: "",
+    zipcode: "",
+    city: "",
+    email: "",
+    phone: "",
   });
-  const [formStatus, setFormStatus] = useState('');
+  const [formStatus, setFormStatus] = useState("");
   const [errors, setErrors] = useState({});
 
   if (loading)
     return (
-      <p className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-3xl">
-        Loading...
-      </p>
+      <div className="w-full h-screen relative">
+        <p className="absolute top-[30%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-3xl">
+          Loading...
+        </p>
+      </div>
     );
   if (error) return <p>Error: {error.message}</p>;
 
@@ -33,7 +35,7 @@ const OrderContainer = () => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
 
-    setErrors({ ...errors, [name]: '' });
+    setErrors({ ...errors, [name]: "" });
   };
 
   const handleSubmit = async (e) => {
@@ -43,7 +45,7 @@ const OrderContainer = () => {
     let validationErrors = {};
 
     if (!selectedContainerId) {
-      setFormStatus('Please select a container.');
+      setFormStatus("Please select a container.");
       return;
     }
 
@@ -55,52 +57,56 @@ const OrderContainer = () => {
     }
 
     const numericFields = {
-      zipcode: 'Postnummer',
-      phone: 'Telefonnummer'
+      zipcode: "Postnummer",
+      phone: "Telefonnummer",
     };
-    
+
     for (const [key, fieldName] of Object.entries(numericFields)) {
-      if (isNaN(formData[key]) || formData[key].trim() === '') {
-        validationErrors[key] = `Letters aren't accepted. Please type numbers for ${fieldName}.`;
+      if (isNaN(formData[key]) || formData[key].trim() === "") {
+        validationErrors[
+          key
+        ] = `Letters aren't accepted. Please type numbers for ${fieldName}.`;
         hasErrors = true;
       }
     }
 
     if (hasErrors) {
       setErrors(validationErrors);
-      setFormStatus('Please fix the errors in the form.');
+      setFormStatus("Please fix the errors in the form.");
       return;
     }
 
     try {
-      const { error } = await supabase
-        .from('orders')
-        .insert([
-          {
-            container_id: selectedContainerId,
-            ...formData,
-          },
-        ]);
+      const { error } = await supabase.from("orders").insert([
+        {
+          container_id: selectedContainerId,
+          ...formData,
+        },
+      ]);
 
       if (error) {
-        if (error.message.includes('invalid input syntax for type bigint')) {
-          setFormStatus('There was an issue with the container ID. Please try again.');
-        } else if (error.message.includes('not-null constraint')) {
-          setFormStatus('Some required fields are missing. Please check your input.');
+        if (error.message.includes("invalid input syntax for type bigint")) {
+          setFormStatus(
+            "There was an issue with the container ID. Please try again."
+          );
+        } else if (error.message.includes("not-null constraint")) {
+          setFormStatus(
+            "Some required fields are missing. Please check your input."
+          );
         } else {
           setFormStatus(`Error: ${error.message}`);
         }
         throw error;
       }
 
-      setFormStatus('Order placed successfully!');
+      setFormStatus("Order placed successfully!");
       setFormData({
-        fullname: '',
-        address: '',
-        zipcode: '',
-        city: '',
-        email: '',
-        phone: '',
+        fullname: "",
+        address: "",
+        zipcode: "",
+        city: "",
+        email: "",
+        phone: "",
       });
       setSelectedContainerId(null);
       setErrors({});
@@ -110,9 +116,7 @@ const OrderContainer = () => {
   };
 
   return (
-    <section
-      className="h-full w-full bg-white mb-32 pb-4 px-8"
-    >
+    <section className="h-full w-full bg-white mb-32 pb-4 px-8 z-[9999]">
       <h2 className="text-4xl pt-16 pb-8 font-bold">Bestil affaldscontainer</h2>
       <h3 className="text-2xl pb-8 font-semibold text-[#119B1E]">
         Hvis i mangler en affaldscontainer i din husstand kan du bestille en ved
@@ -145,7 +149,9 @@ const OrderContainer = () => {
       <p className="py-8">Containeren leveres til:</p>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input
-          className={`px-6 py-3 rounded-lg border border-gray-300 w-full xl:w-2/5 ${errors.fullname ? 'border-red-500' : ''}`}
+          className={`px-6 py-3 rounded-lg border border-gray-300 w-full xl:w-2/5 ${
+            errors.fullname ? "border-red-500" : ""
+          }`}
           type="text"
           name="fullname"
           value={formData.fullname}
@@ -154,7 +160,9 @@ const OrderContainer = () => {
           placeholder="Indtast dit navn"
         />
         <input
-          className={`px-6 py-3 rounded-lg border border-gray-300 w-full xl:w-2/5 ${errors.address ? 'border-red-500' : ''}`}
+          className={`px-6 py-3 rounded-lg border border-gray-300 w-full xl:w-2/5 ${
+            errors.address ? "border-red-500" : ""
+          }`}
           type="text"
           name="address"
           value={formData.address}
@@ -163,7 +171,9 @@ const OrderContainer = () => {
           placeholder="Indtast din adresse"
         />
         <input
-          className={`px-6 py-3 rounded-lg border border-gray-300 w-full xl:w-2/5 ${errors.zipcode ? 'border-red-500' : ''}`}
+          className={`px-6 py-3 rounded-lg border border-gray-300 w-full xl:w-2/5 ${
+            errors.zipcode ? "border-red-500" : ""
+          }`}
           type="text"
           name="zipcode"
           value={formData.zipcode}
@@ -172,7 +182,9 @@ const OrderContainer = () => {
           placeholder="Indtast dit postnummer"
         />
         <input
-          className={`px-6 py-3 rounded-lg border border-gray-300 w-full xl:w-2/5 ${errors.city ? 'border-red-500' : ''}`}
+          className={`px-6 py-3 rounded-lg border border-gray-300 w-full xl:w-2/5 ${
+            errors.city ? "border-red-500" : ""
+          }`}
           type="text"
           name="city"
           value={formData.city}
@@ -181,7 +193,9 @@ const OrderContainer = () => {
           placeholder="Indtast navn på din by"
         />
         <input
-          className={`px-6 py-3 rounded-lg border border-gray-300 w-full xl:w-2/5 ${errors.email ? 'border-red-500' : ''}`}
+          className={`px-6 py-3 rounded-lg border border-gray-300 w-full xl:w-2/5 ${
+            errors.email ? "border-red-500" : ""
+          }`}
           type="email"
           name="email"
           value={formData.email}
@@ -190,7 +204,9 @@ const OrderContainer = () => {
           placeholder="Indtast din email"
         />
         <input
-          className={`px-6 py-3 rounded-lg border border-gray-300 w-full xl:w-2/5 ${errors.phone ? 'border-red-500' : ''}`}
+          className={`px-6 py-3 rounded-lg border border-gray-300 w-full xl:w-2/5 ${
+            errors.phone ? "border-red-500" : ""
+          }`}
           type="tel"
           name="phone"
           value={formData.phone}

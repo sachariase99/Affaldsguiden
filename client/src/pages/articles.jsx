@@ -12,16 +12,16 @@ const Articles = () => {
 
   if (loading)
     return (
-      <p className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-3xl">
-        Loading...
-      </p>
+      <div className="w-full h-screen relative">
+        <p className="absolute top-[30%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-3xl">
+          Loading...
+        </p>
+      </div>
     );
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <section
-      className="h-full w-full bg-white mb-32 pb-4"
-    >
+    <section className="h-full w-full bg-white mb-32 pb-4">
       <h2 className="text-5xl px-8 py-16 font-bold">Artikler</h2>
       {articles.map(
         (article, index) =>

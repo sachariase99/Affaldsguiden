@@ -12,7 +12,7 @@ const Footer = () => {
         style={{
           backgroundImage: `url(${FooterBg})`,
         }}
-        className="bg-cover h-96 w-full absolute bottom-0 z-0"
+        className="bg-cover h-96 w-full absolute bottom-0"
       ></div>
       <div className="relative z-10 flex flex-col lg:flex-row justify-between lg:items-center px-24 py-8">
         <div>
