@@ -68,7 +68,9 @@ const SortingDetailPage = () => {
               />
             </div>
             <span
-              className="absolute left-1/2 -translate-x-1/2 -bottom-6 h-12 w-12 cursor-pointer bg-[#D8EADB] border border-[#677D6A] rounded-full flex items-center justify-center"
+              className={`absolute left-1/2 -translate-x-1/2 -bottom-6 h-12 w-12 cursor-pointer border border-[#677D6A] hover:bg-[#677D6A] rounded-full flex items-center justify-center ${
+                openCategoryId === category.id ? "bg-[#677D6A]" : "bg-[#D8EADB]"
+              }`}
               onClick={() => toggleMenu(category.id)}
             >
               {openCategoryId === category.id ? "▲" : "▼"}
