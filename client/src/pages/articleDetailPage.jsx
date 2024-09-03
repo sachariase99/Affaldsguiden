@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import useArticles from '../hooks/useArticles.jsx';
+import useArticles from '../hooks/useArticles';
 import styles from '../scss/articleDetailPage.module.scss';
 
 const ArticleDetailPage = () => {
@@ -29,7 +29,7 @@ const ArticleDetailPage = () => {
   });
 
   return (
-    <article className='mb-64 px-12 py-12' style={{ backgroundImage: "linear-gradient(to bottom, #D8EADB 40%, #FFFFFF 50%)" }}>
+    <article className='mb-64 px-12 py-12'>
       <h1 className='text-4xl font-bold'>{article.title}</h1>
       <p className='text-3xl font-bold text-[#119B1E] mt-6'>{article.teaser}</p>
       <p className='my-6'>{formattedDate}</p> {/* Display formatted date */}
