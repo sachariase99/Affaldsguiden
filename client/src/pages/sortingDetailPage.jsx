@@ -64,13 +64,13 @@ const SortingDetailPage = () => {
               <div className="">
                 <div className="grid grid-cols-2 gap-16">
                   <div>
-                    <h3 className="text-[#119B1E] border-b border-[#119B1E]">Ja tak</h3>
+                    <h3 className="text-[#119B1E] mb-2 text-2xl border-b border-[#119B1E]">Ja tak</h3>
                     {category.types?.filter(type => type.is_allowed).map((type) => (
                       <div key={type.id}>{type.title}</div>
                     ))}
                   </div>
                   <div>
-                    <h3 className="text-[#951C3F] border-b border-[#951C3F]">Nej tak</h3>
+                    <h3 className="text-[#951C3F] mb-2 text-2xl border-b border-[#951C3F]">Nej tak</h3>
                     {category.types?.filter(type => !type.is_allowed).map((type) => (
                       <div key={type.id}>{type.title}</div>
                     ))}
