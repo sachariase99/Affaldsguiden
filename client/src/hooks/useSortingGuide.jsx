@@ -61,6 +61,7 @@ const useSortingGuide = () => {
                     })
                 );
 
+                console.log("All sections with categories and types:", sectionsWithCategories);
                 setSections(sectionsWithCategories);
             } catch (err) {
                 setError(err.message);
