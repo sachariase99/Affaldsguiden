@@ -27,7 +27,6 @@ const useSortingGuide = () => {
 
                         const categoriesWithTypes = await Promise.all(
                             categoriesData.map(async (category) => {
-                                // Fetch the relationships from trash_category_type_rel
                                 const { data: categoryTypeRelData, error: categoryTypeRelError } = await supabase
                                     .from("trash_category_type_rel")
                                     .select("type_id, is_allowed")
@@ -35,7 +34,6 @@ const useSortingGuide = () => {
 
                                 if (categoryTypeRelError) throw categoryTypeRelError;
 
-                                // Fetch all types related to the category
                                 const typeIds = categoryTypeRelData.map(rel => rel.type_id);
                                 const { data: typesData, error: typesError } = await supabase
                                     .from("trash_types")
@@ -44,7 +42,6 @@ const useSortingGuide = () => {
 
                                 if (typesError) throw typesError;
 
-                                // Add is_allowed property to each type
                                 const typesWithAllowance = typesData.map(type => ({
                                     ...type,
                                     is_allowed: categoryTypeRelData.find(rel => rel.type_id === type.id).is_allowed
@@ -64,7 +61,6 @@ const useSortingGuide = () => {
                     })
                 );
 
-                console.log("All sections with categories and types:", sectionsWithCategories);
                 setSections(sectionsWithCategories);
             } catch (err) {
                 setError(err.message);
