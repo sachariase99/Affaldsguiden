@@ -21,9 +21,6 @@ const Articles = () => {
   return (
     <section
       className="h-full w-full bg-white shadow mb-32 pb-4"
-      style={{
-        backgroundImage: "linear-gradient(to bottom, #D8EADB 40%, #FFFFFF 50%)",
-      }}
     >
       <h2 className="text-5xl px-8 py-16 font-bold">Artikler</h2>
       {articles.map(
