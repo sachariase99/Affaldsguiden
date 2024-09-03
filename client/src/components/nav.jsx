@@ -59,7 +59,7 @@ const Nav = () => {
           </li>
           <li>
             <NavLink
-              to="/genbrug"
+              to="/recycle"
               className={({ isActive }) =>
                 `lg:py-6 px-6 text-xl text-center lg:text-normal lg:border-b-0 lg:border-r-[1px] border-black hover:bg-[#D6BD98] ${
                   isActive ? "bg-[#D6BD98]" : ""
