@@ -28,8 +28,8 @@ const Nav = () => {
 
         {/* Navigation links */}
         <ul
-          className={`lg:flex lg:py-8 lg:flex-row lg:items-center lg:overflow-visible lg:max-h-none lg:transition-none 
-            flex flex-col overflow-hidden transition-max-height duration-300 ease-in-out ${
+          className={`lg:flex lg:py-6 lg:flex-row lg:items-center lg:overflow-visible lg:max-h-none lg:transition-none 
+            flex flex-col overflow-hidden transition-max-height duration-300 ease-in-out uppercase font-semibold ${
               isOpen ? "max-h-[500px]" : "max-h-0"
             }`}
         >
@@ -37,7 +37,7 @@ const Nav = () => {
             <NavLink
               to="/home"
               className={({ isActive }) =>
-                `lg:py-8 px-8 text-xl text-center lg:text-normal lg:border-b-0 lg:border-l-[1px] lg:border-r-[1px] border-black hover:bg-[#D6BD98] ${
+                `lg:py-6 px-6 text-xl text-center lg:text-normal lg:border-b-0 lg:border-l-[1px] lg:border-r-[1px] border-black hover:bg-[#D6BD98] ${
                   isActive ? "bg-[#D6BD98]" : ""
                 }`
               }
@@ -49,7 +49,7 @@ const Nav = () => {
             <NavLink
               to="/sortingGuide"
               className={({ isActive }) =>
-                `lg:py-8 px-8 text-xl text-center lg:text-normal lg:border-b-0 lg:border-r-[1px] border-black hover:bg-[#D6BD98] ${
+                `lg:py-6 px-6 text-xl text-center lg:text-normal lg:border-b-0 lg:border-r-[1px] border-black hover:bg-[#D6BD98] ${
                   isActive ? "bg-[#D6BD98]" : ""
                 }`
               }
@@ -61,19 +61,19 @@ const Nav = () => {
             <NavLink
               to="/genbrug"
               className={({ isActive }) =>
-                `lg:py-8 px-8 text-xl text-center lg:text-normal lg:border-b-0 lg:border-r-[1px] border-black hover:bg-[#D6BD98] ${
+                `lg:py-6 px-6 text-xl text-center lg:text-normal lg:border-b-0 lg:border-r-[1px] border-black hover:bg-[#D6BD98] ${
                   isActive ? "bg-[#D6BD98]" : ""
                 }`
               }
             >
-              Genbrug
+              Genbrugsstationer
             </NavLink>
           </li>
           <li>
             <NavLink
               to="/articles"
               className={({ isActive }) =>
-                `lg:py-8 px-8 text-xl text-center lg:text-normal lg:border-b-0 lg:border-r-[1px] border-black hover:bg-[#D6BD98] ${
+                `lg:py-6 px-6 text-xl text-center lg:text-normal lg:border-b-0 lg:border-r-[1px] border-black hover:bg-[#D6BD98] ${
                   isActive ? "bg-[#D6BD98]" : ""
                 }`
               }
@@ -85,7 +85,7 @@ const Nav = () => {
             <NavLink
               to="/container"
               className={({ isActive }) =>
-              `lg:py-8 px-8 text-xl text-center lg:text-normal lg:border-r-[1px] border-black hover:bg-[#D6BD98] ${
+              `lg:py-6 px-6 text-xl text-center lg:text-normal lg:border-r-[1px] border-black hover:bg-[#D6BD98] ${
                   isActive ? "bg-[#D6BD98]" : ""
                 }`
               }
