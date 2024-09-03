@@ -20,7 +20,7 @@ const Articles = () => {
 
   return (
     <section
-      className="h-full w-full bg-white shadow mb-32 pb-4"
+      className="h-full w-full bg-white mb-32 pb-4"
     >
       <h2 className="text-5xl px-8 py-16 font-bold">Artikler</h2>
       {articles.map(
