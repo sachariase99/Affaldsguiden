@@ -33,7 +33,7 @@ const HomeBottomCard = () => {
 
   return (
     <section className="h-full w-full bg-white shadow mb-32">
-      {[articles[3]].map(
+      {[articles[7]].map(
         (article, index) =>
           article && (
             <div
@@ -42,7 +42,7 @@ const HomeBottomCard = () => {
             >
               <img
                 className="w-1/3"
-                src={affaldssortering}
+                src={article.image_url}
                 alt="Affald i skoven"
               />
               <div className="flex flex-col mx-8 mt-8 xl:mt-0">
