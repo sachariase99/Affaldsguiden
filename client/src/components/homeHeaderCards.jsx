@@ -75,7 +75,7 @@ const HomeHeaderCards = () => {
             article && (
               <div
                 key={index}
-                className="bg-white rounded-xl px-6 py-6 flex flex-col justify-between"
+                className="bg-white rounded-xl px-6 py-6 flex flex-col justify-between shadow"
               >
                 <div>
                   <h3>{renderArticleTitle(article.title)}</h3>
