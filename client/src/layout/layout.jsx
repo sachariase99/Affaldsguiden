@@ -17,6 +17,7 @@ const Layout = () => {
       >
         <div
           className="relative z-10 flex-grow max-w-[1280px] mx-auto px-8 xl:px-0"
+          style={{ backgroundImage: "linear-gradient(to bottom, #D8EADB 40%, #FFFFFF 50%)" }}
         >
           <Outlet />
         </div>
