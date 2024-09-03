@@ -39,7 +39,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="p-16 lg:mb-32 mx-8 h-[700px]" style={{ backgroundImage: "linear-gradient(to bottom, #D8EADB 40%, #FFFFFF 50%)" }}>
+    <div className="p-16 lg:mb-32 mx-8 h-[700px]" >
       <div className="w-full md:w-1/2">
         <h2 className="text-4xl font-bold mb-12">Login</h2>
         <form onSubmit={handleSubmit} className="flex flex-col">
