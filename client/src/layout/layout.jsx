@@ -16,10 +16,10 @@ const Layout = () => {
         style={{
           backgroundImage: `linear-gradient(to bottom, ${bgColor} 10%, #FFFFFF 45%)`,
         }}
-        className="w-full relative"
+        className="w-full"
       >
         <div
-          className="relative z-10 flex-grow max-w-[1280px] mx-auto px-8 xl:px-0"
+          className="z-10 flex-grow max-w-[1280px] mx-auto px-8 xl:px-0"
           style={{ backgroundImage: "linear-gradient(to bottom, #D8EADB 40%, #FFFFFF 50%)" }}
         >
           <Outlet />
