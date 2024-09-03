@@ -112,9 +112,6 @@ const OrderContainer = () => {
   return (
     <section
       className="h-full w-full bg-white shadow mb-32 pb-4 px-8"
-      style={{
-        backgroundImage: "linear-gradient(to bottom, #D8EADB 40%, #FFFFFF 50%)",
-      }}
     >
       <h2 className="text-4xl pt-16 pb-8 font-bold">Bestil affaldscontainer</h2>
       <h3 className="text-2xl pb-8 font-semibold text-[#119B1E]">
