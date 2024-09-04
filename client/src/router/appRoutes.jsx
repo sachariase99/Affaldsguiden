@@ -9,6 +9,7 @@ import OrderContainer from "../pages/orderContainer";
 import SortingGuide from "../pages/sortingGuide";
 import SortingDetailPage from "../pages/sortingDetailPage";
 import Recycle from "../pages/recycle";
+import RecycleDetailPage from "../pages/recycleDetailPage";
 
 const AppRoutes = () => {
   return (
@@ -19,6 +20,7 @@ const AppRoutes = () => {
           <Route path="/sortingGuide" element={<SortingGuide />} />
           <Route path="/sortingGuide/:id" element={<SortingDetailPage />} />
           <Route path="/recycle" element={<Recycle />} />
+          <Route path="/recycle/:id" element={<RecycleDetailPage />} />
           <Route path="/articles" element={<Articles />} />
           <Route path="/articles/:id" element={<ArticleDetailPage />} />
           <Route path="/container" element={<OrderContainer />} />
