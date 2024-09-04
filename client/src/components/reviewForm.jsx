@@ -35,7 +35,6 @@ const ReviewForm = ({ siteId, subject, onReviewSubmit }) => {
     if (error) {
       console.error("Error submitting review:", error);
     } else {
-      console.log("Review submitted successfully:", data);
       onReviewSubmit(); // Notify parent component of new review
     }
   };
