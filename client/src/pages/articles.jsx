@@ -41,7 +41,7 @@ const Articles = () => {
                   <p>{article.teaser}</p>
                 </div>
                 <Link to={`/articles/${article.id}`}>
-                  <p>Læs mere</p>
+                  <p className="text-blue-500 underline">Læs mere</p>
                 </Link>
               </div>
             </div>
