@@ -1,6 +1,7 @@
 import useRecycles from "../hooks/useRecycle";
 import Map from "../components/map";
 import { Link } from "react-router-dom";
+import RatingStars from "../components/RatingStars"; // Import the RatingStars component
 
 const Recycle = () => {
   const { recycles, loading, error } = useRecycles(true);
@@ -17,25 +18,36 @@ const Recycle = () => {
 
   return (
     <section className="grid grid-cols-1 xl:grid-cols-2 gap-16 p-16">
-      {recycles.map((recycle) => (
-        <Link key={recycle.id} to={`/recycle/${recycle.id}`}>
-          <div>
-            <div className="h-48 bg-gray-200 shadow">
-              {/* Map Component with Latitude and Longitude */}
-              <Map latitude={recycle.longitude} longitude={recycle.latitude} />
-            </div>
-            <div className="bg-white p-8 rounded-b-lg shadow">
-              <div className="pb-8 border-b border-black">
-                <h2 className="font-semibold text-2xl">{recycle.name}</h2>
-                <p>
-                  {recycle.address}, {recycle.zipcode} {recycle.city}
-                </p>
+      {recycles.map((recycle) => {
+        // Corrected latitude and longitude values
+        const correctedLatitude = recycle.longitude;
+        const correctedLongitude = recycle.latitude;
+
+        return (
+          <Link key={recycle.id} to={`/recycle/${recycle.id}`}>
+            <div>
+              <div className="h-48 bg-gray-200 shadow">
+                {/* Map Component with Corrected Latitude and Longitude */}
+                <Map latitude={correctedLatitude} longitude={correctedLongitude} />
+              </div>
+              <div className="bg-white p-8 rounded-b-lg shadow">
+                <div className="pb-8 border-b border-black">
+                  <h2 className="font-semibold text-2xl">{recycle.name}</h2>
+                  <p>
+                    {recycle.address}, {recycle.zipcode} {recycle.city}
+                  </p>
+                </div>
+                <div className="mt-4 flex items-center justify-between">
+                  <RatingStars rating={recycle.average_rating || 0} />
+                  <p>{recycle.reviews_count || 0} Anmeldelser</p>
+                </div>
               </div>
             </div>
-          </div>
-        </Link>
-      ))}
+          </Link>
+        );
+      })}
     </section>
   );
 };
+
 export default Recycle;
