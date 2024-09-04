@@ -65,7 +65,7 @@ const SortingDetailPage = () => {
                   src={category.icon_url}
                   alt={category.title}
                 />
-                <p className="py-8 pl-4 font-semibold text-xl">
+                <p className="py-8 pl-4 hidden md:block font-semibold text-xl">
                   {category.title}
                 </p>
               </div>
