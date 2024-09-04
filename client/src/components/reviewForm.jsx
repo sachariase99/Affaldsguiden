@@ -87,7 +87,7 @@ const ReviewForm = ({ siteId, subject, onReviewSubmit }) => {
           <p className="text-xl">Skriv en kommentar</p>
           <div className="flex gap-1">{renderStars()}</div>
         </div>
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-16">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 xl:gap-16">
           {/* Input fields for firstname and lastname */}
           <div>
             <input
