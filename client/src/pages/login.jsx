@@ -4,34 +4,40 @@ import { useSupabase } from "../supabase/supabaseClient";
 import { AuthContext } from "../context/authContext";
 
 const LoginPage = () => {
+  // State for email and password input fields
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+
+  // Access authentication context
   const { isLoggedIn, login } = useContext(AuthContext);
   const navigate = useNavigate();
-
   const { supabase } = useSupabase();
 
+  // Redirect to home if already logged in
   useEffect(() => {
     if (isLoggedIn) {
       navigate("/home");
     }
   }, [isLoggedIn, navigate]);
 
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
 
     try {
+      // Authenticate user with Supabase
       const { error } = await supabase.auth.signInWithPassword({
         email,
         password,
       });
+
       if (error) {
         setError(error.message);
       } else {
-        login(email);
-        navigate("/home");
+        login(email); // Update auth context with login
+        navigate("/home"); // Redirect to home page on successful login
       }
     } catch (error) {
       setError("Error signing in. Please try again.");
@@ -39,8 +45,8 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="p-16 lg:mb-32 mx-8 h-[700px]" >
-      <div className="w-full md:w-1/2">
+    <div className="p-16 lg:mb-32 mx-8 h-[700px]">
+      <div className="w-full md:w-1/2 mx-auto">
         <h2 className="text-4xl font-bold mb-12">Login</h2>
         <form onSubmit={handleSubmit} className="flex flex-col">
           {error && <p style={{ color: "red" }}>{error}</p>}

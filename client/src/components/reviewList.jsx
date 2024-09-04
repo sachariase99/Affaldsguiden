@@ -4,19 +4,25 @@ import { FaStar, FaRegStar } from "react-icons/fa";
 import pfp from "../assets/pfp.png";
 import { AuthContext } from "../context/authContext";
 
+// ReviewList component for displaying and managing reviews
 const ReviewList = ({ siteId }) => {
+  // Get the Supabase client instance from the custom hook
   const { supabase } = useSupabase();
+  // Local state to manage reviews, editing review, and editing fields
   const [reviews, setReviews] = useState([]);
-  const [editingReview, setEditingReview] = useState(null); // To hold the review being edited
+  const [editingReview, setEditingReview] = useState(null);
   const [editComment, setEditComment] = useState("");
   const [editStars, setEditStars] = useState(0);
+  // Access authentication context to get user information
   const { isLoggedIn, userId } = useContext(AuthContext);
 
+  // Function to format date into a readable format
   const formatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
+  // Fetch reviews from Supabase when the component mounts or when siteId changes
   useEffect(() => {
     const fetchReviews = async () => {
       const { data, error } = await supabase
@@ -34,7 +40,7 @@ const ReviewList = ({ siteId }) => {
     fetchReviews();
   }, [siteId, supabase]);
 
-  // Function to delete a review
+  // Function to delete a review after user confirmation
   const deleteReview = async (reviewId) => {
     const isConfirmed = window.confirm("Are you sure you want to delete this review?");
     if (isConfirmed) {
@@ -51,21 +57,21 @@ const ReviewList = ({ siteId }) => {
     }
   };
 
-  // Function to handle edit modal open
+  // Function to open the edit modal and set the current review data for editing
   const openEditModal = (review) => {
     setEditingReview(review);
     setEditComment(review.comment);
     setEditStars(review.num_stars);
   };
 
-  // Function to handle edit modal close
+  // Function to close the edit modal and reset editing fields
   const closeEditModal = () => {
     setEditingReview(null);
     setEditComment("");
     setEditStars(0);
   };
 
-  // Function to update the review
+  // Function to update the review in Supabase
   const updateReview = async () => {
     const { error } = await supabase
       .from("reviews")
@@ -84,7 +90,7 @@ const ReviewList = ({ siteId }) => {
     }
   };
 
-  // Function to render stars
+  // Function to render star icons based on the number of stars
   const renderStars = (numStars) => {
     const stars = [];
     for (let i = 1; i <= 5; i++) {
@@ -101,7 +107,7 @@ const ReviewList = ({ siteId }) => {
     return stars;
   };
 
-  // Function to render stars for editing
+  // Function to render star icons for editing the review
   const renderEditableStars = () => {
     const stars = [];
     for (let i = 1; i <= 5; i++) {
@@ -124,12 +130,14 @@ const ReviewList = ({ siteId }) => {
 
   return (
     <div>
+      {/* Display the list of reviews or a message if there are no reviews */}
       {reviews.length > 0 ? (
         reviews.map((review) => (
           <div
             key={review.id}
             className="p-4 rounded flex flex-col md:flex-row gap-4"
           >
+            {/* Placeholder profile image */}
             <img className="w-36" src={pfp} alt="Profile" />
             <div className="w-screen">
               <h3 className="text-2xl font-semibold">
@@ -140,6 +148,7 @@ const ReviewList = ({ siteId }) => {
                   <p>{formatDate(review.created_at)}</p>
                   <p className="flex">{renderStars(review.num_stars)}</p>
                 </div>
+                {/* Display edit and delete options if the user is logged in and is the author of the review */}
                 {isLoggedIn && review.user_id === userId && (
                   <div className="flex gap-2 mb-3 md:mb-0">
                     <p
@@ -165,15 +174,15 @@ const ReviewList = ({ siteId }) => {
         <p>No reviews yet.</p>
       )}
 
-      {/* Edit Modal */}
+      {/* Edit modal for updating a review */}
       {editingReview && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
           <div className="bg-white p-6 rounded shadow-lg w-96">
             <h2 className="text-xl font-bold mb-4">Edit Review</h2>
             <div className="mb-4">
               <div className="flex justify-between items-center">
-              <label className="block text-gray-700">Comment</label>
-              <div className="flex mt-2">{renderEditableStars()}</div>
+                <label className="block text-gray-700">Comment</label>
+                <div className="flex mt-2">{renderEditableStars()}</div>
               </div>
               <textarea
                 value={editComment}

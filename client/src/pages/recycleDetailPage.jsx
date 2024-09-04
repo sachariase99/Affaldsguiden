@@ -9,11 +9,12 @@ import { useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 
 const RecycleDetailPage = () => {
-  const { id } = useParams();
-  const { isLoggedIn, userId } = useContext(AuthContext); // Get userId from context
-  const [refreshKey, setRefreshKey] = useState(0);
-  const { recycles, loading, error } = useRecycles(true);
+  const { id } = useParams(); // Get the recycle ID from the URL
+  const { isLoggedIn, userId } = useContext(AuthContext); // Access authentication context
+  const [refreshKey, setRefreshKey] = useState(0); // State for handling review submission
+  const { recycles, loading, error } = useRecycles(true); // Fetch recycling data
 
+  // Show loading state while data is being fetched
   if (loading)
     return (
       <div className="w-full h-screen relative">
@@ -22,26 +23,35 @@ const RecycleDetailPage = () => {
         </p>
       </div>
     );
+
+  // Display an error message if there's an issue fetching data
   if (error) return <p>Error: {error}</p>;
 
+  // Find the specific recycling center based on the ID
   const recycle = recycles.find((recycle) => recycle.id === parseInt(id));
 
-  if (!recycle) return <p>Article not found.</p>;
+  // Display a message if the recycling center is not found
+  if (!recycle) return <p>Recycling center not found.</p>;
 
+  // Corrected latitude and longitude based on your data naming
   const correctedLatitude = recycle.longitude;
   const correctedLongitude = recycle.latitude;
 
+  // Handle review submission and refresh the page
   const handleReviewSubmit = () => {
     setTimeout(() => {
-      window.location.reload();
-    }, 1000); // Delay to reload page
+      window.location.reload(); // Refresh the page to show the new review
+    }, 1000);
   };
 
   return (
-    <section className="bg-white ">
+    <section className="bg-white">
+      {/* Map Component */}
       <div className="h-96">
         <Map latitude={correctedLatitude} longitude={correctedLongitude} />
       </div>
+      
+      {/* Recycling Center Details */}
       <div className="p-8 rounded-b-lg">
         <h1 className="text-4xl font-semibold mb-4">{recycle.name}</h1>
         <p>{recycle.address}</p>
@@ -57,12 +67,14 @@ const RecycleDetailPage = () => {
           {recycle.phone}
         </p>
       </div>
+      
+      {/* Review Form and List */}
       <div className="mx-8 py-8">
         <div>
           <h2 className="text-[#119B1E] text-3xl">Kommentarer</h2>
           <ReviewForm
             siteId={recycle.id}
-            userId={userId} // Pass userId to ReviewForm
+            userId={userId}
             subject={recycle.name}
             onReviewSubmit={handleReviewSubmit}
           />

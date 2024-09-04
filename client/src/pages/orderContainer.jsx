@@ -3,8 +3,11 @@ import useContainer from "../hooks/useContainer";
 import { useSupabase } from "../supabase/supabaseClient";
 
 const OrderContainer = () => {
+  // Supabase client and container data from custom hook
   const { supabase } = useSupabase();
   const { containers, loading, error } = useContainer(true);
+
+  // State for selected container and form data
   const [selectedContainerId, setSelectedContainerId] = useState(null);
   const [formData, setFormData] = useState({
     fullname: "",
@@ -17,7 +20,8 @@ const OrderContainer = () => {
   const [formStatus, setFormStatus] = useState("");
   const [errors, setErrors] = useState({});
 
-  if (loading)
+  // Show loading state while fetching containers
+  if (loading) 
     return (
       <div className="w-full h-screen relative">
         <p className="absolute top-[30%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-3xl">
@@ -25,30 +29,36 @@ const OrderContainer = () => {
         </p>
       </div>
     );
+
+  // Show error message if there's an issue fetching containers
   if (error) return <p>Error: {error.message}</p>;
 
+  // Handle container selection
   const handleClick = (id) => {
     setSelectedContainerId(id === selectedContainerId ? null : id);
   };
 
+  // Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-
-    setErrors({ ...errors, [name]: "" });
+    setErrors({ ...errors, [name]: "" }); // Clear error for the field
   };
 
+  // Validate and handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     let hasErrors = false;
     let validationErrors = {};
 
+    // Check if a container is selected
     if (!selectedContainerId) {
       setFormStatus("Please select a container.");
       return;
     }
 
+    // Validate form fields
     for (const [key, value] of Object.entries(formData)) {
       if (!value.trim()) {
         validationErrors[key] = `Please fill in the ${key}.`;
@@ -56,6 +66,7 @@ const OrderContainer = () => {
       }
     }
 
+    // Validate numeric fields
     const numericFields = {
       zipcode: "Postnummer",
       phone: "Telefonnummer",
@@ -63,9 +74,7 @@ const OrderContainer = () => {
 
     for (const [key, fieldName] of Object.entries(numericFields)) {
       if (isNaN(formData[key]) || formData[key].trim() === "") {
-        validationErrors[
-          key
-        ] = `Letters aren't accepted. Please type numbers for ${fieldName}.`;
+        validationErrors[key] = `Letters aren't accepted. Please type numbers for ${fieldName}.`;
         hasErrors = true;
       }
     }
@@ -77,6 +86,7 @@ const OrderContainer = () => {
     }
 
     try {
+      // Insert order into Supabase
       const { error } = await supabase.from("orders").insert([
         {
           container_id: selectedContainerId,
@@ -84,21 +94,19 @@ const OrderContainer = () => {
         },
       ]);
 
+      // Handle possible errors from Supabase
       if (error) {
         if (error.message.includes("invalid input syntax for type bigint")) {
-          setFormStatus(
-            "There was an issue with the container ID. Please try again."
-          );
+          setFormStatus("There was an issue with the container ID. Please try again.");
         } else if (error.message.includes("not-null constraint")) {
-          setFormStatus(
-            "Some required fields are missing. Please check your input."
-          );
+          setFormStatus("Some required fields are missing. Please check your input.");
         } else {
           setFormStatus(`Error: ${error.message}`);
         }
         throw error;
       }
 
+      // Reset form and status on successful submission
       setFormStatus("Order placed successfully!");
       setFormData({
         fullname: "",
