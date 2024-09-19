@@ -4,6 +4,7 @@ import { useSupabase } from "../supabase/supabaseClient";
 // Custom hook to fetch articles from Supabase
 const useArticles = (isNews) => {
   // Access Supabase client from custom hook
+  // Destructure assignment
   const { supabase } = useSupabase();
   // State to store the fetched articles
   const [articles, setArticles] = useState([]);
@@ -17,6 +18,7 @@ const useArticles = (isNews) => {
     if (!supabase) return;
 
     // Function to fetch articles from Supabase
+    // Async / await = promise
     const fetchArticles = async () => {
       setLoading(true); // Set loading to true before fetching
       setError(null); // Reset any previous errors
@@ -31,13 +33,18 @@ const useArticles = (isNews) => {
           throw error; // Throw error to be caught in the catch block
         }
         
+
+        // Rerenderer
         // Update state with fetched articles
+        // Skifter State Variabel
         setArticles(data);
       } catch (err) {
         // Set error state if there was an issue
+        // Skifter State Variabel
         setError(err.message);
       } finally {
         // Set loading to false once fetch is complete (successful or error)
+        // Skifter State Variabel
         setLoading(false);
       }
     };
